@@ -1,0 +1,15 @@
+services:
+  mi-blog-react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blog-frontend
+    restart: always
+    ports:
+      - "8080:80" # El puerto 8080 es el que pondrás luego en Nginx Proxy Manager
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true # Esto permite que tu blog se vea con el Proxy si lo configuras bien:80" # El puerto 8080 de tu Pi irá al 80 del blog
